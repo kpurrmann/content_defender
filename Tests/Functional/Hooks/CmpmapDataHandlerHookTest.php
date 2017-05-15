@@ -26,7 +26,7 @@ class CmpmapDataHandlerHookTest extends AbstractFunctionalTestCase
         $dataHandler->process_datamap();
         $dataHandler->process_cmdmap();
 
-        $count = $this->getDatabaseConnection()->exec_SELECTcountRows('*', 'tt_content', 'uid=2 AND colPos=0');
+        $count = $this->getDatabaseConnection()->getSelectCount('*', 'tt_content', 'uid=2 AND colPos=0');
 
         $this->assertSame(1, $count);
     }
@@ -49,7 +49,7 @@ class CmpmapDataHandlerHookTest extends AbstractFunctionalTestCase
         $dataHandler->process_datamap();
         $dataHandler->process_cmdmap();
 
-        $count = $this->getDatabaseConnection()->exec_SELECTcountRows('*', 'tt_content', 'uid=3 AND colPos=0');
+        $count = $this->getDatabaseConnection()->getSelectCount('*', 'tt_content', 'uid=3 AND colPos=0');
 
         $this->assertSame(0, $count);
     }
@@ -72,7 +72,7 @@ class CmpmapDataHandlerHookTest extends AbstractFunctionalTestCase
         $dataHandler->start([], $commandMap);
         $dataHandler->process_cmdmap();
 
-        $count = $this->getDatabaseConnection()->exec_SELECTcountRows('*', 'tt_content', 'pid=3 AND colPos=3');
+        $count = $this->getDatabaseConnection()->getSelectCount('*', 'tt_content', 'pid=3 AND colPos=3');
 
         $this->assertSame(1, $count);
     }
@@ -97,7 +97,7 @@ class CmpmapDataHandlerHookTest extends AbstractFunctionalTestCase
         $dataHandler->process_cmdmap();
 
         $recordUid = $dataHandler->copyMappingArray['tt_content'][2];
-        $count = $this->getDatabaseConnection()->exec_SELECTcountRows('*', 'tt_content', 'uid=' . $recordUid . ' AND colPos=0');
+        $count = $this->getDatabaseConnection()->getSelectCount('*', 'tt_content', 'uid=' . $recordUid . ' AND colPos=0');
 
         $this->assertSame(1, $count);
     }
@@ -116,7 +116,7 @@ class CmpmapDataHandlerHookTest extends AbstractFunctionalTestCase
         $dataHandler->process_cmdmap();
 
         $recordUid = $dataHandler->copyMappingArray['tt_content'][2];
-        $count = $this->getDatabaseConnection()->exec_SELECTcountRows('*', 'tt_content', 'uid=' . $recordUid . ' AND colPos=0');
+        $count = $this->getDatabaseConnection()->getSelectCount('*', 'tt_content', 'uid=' . $recordUid . ' AND colPos=0');
 
         $this->assertSame(1, $count);
     }
@@ -178,7 +178,7 @@ class CmpmapDataHandlerHookTest extends AbstractFunctionalTestCase
         $dataHandler->start([], $commandMap);
         $dataHandler->process_cmdmap();
 
-        $count = $this->getDatabaseConnection()->exec_SELECTcountRows('*', 'tt_content', 'pid=3 AND colPos=3');
+        $count = $this->getDatabaseConnection()->getSelectCount('*', 'tt_content', 'pid=3 AND colPos=3');
 
         $this->assertSame(1, $count);
     }
@@ -196,7 +196,7 @@ class CmpmapDataHandlerHookTest extends AbstractFunctionalTestCase
         $dataHandler->start([], $commandMap);
         $dataHandler->process_cmdmap();
 
-        $count = $this->getDatabaseConnection()->exec_SELECTcountRows('*', 'tt_content', 'deleted=1');
+        $count = $this->getDatabaseConnection()->getSelectCount('*', 'tt_content', 'deleted=1');
 
         $this->assertSame(1, $count);
     }

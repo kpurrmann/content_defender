@@ -82,7 +82,7 @@ class DatamapDataHandlerHookTest extends AbstractFunctionalTestCase
         $dataHandler->start($datamap, []);
         $dataHandler->process_datamap();
 
-        $count = $this->getDatabaseConnection()->exec_SELECTcountRows('*', 'tt_content', 'pid=3 AND colPos=0');
+        $count = $this->getDatabaseConnection()->getSelectCount('*', 'tt_content',  'pid=3 AND colPos=0');
 
         $this->assertSame(3, $count);
     }
